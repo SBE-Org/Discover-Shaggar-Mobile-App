@@ -11,6 +11,7 @@ import { PlaceRow } from './places.jsx';
 import { TripCard } from './trips.jsx';
 import { PageHead, SecHead, ModalHead, Field, Honeypot, Empty } from './common.jsx';
 import * as M from './map.js';
+import { canPrompt, promptInstall, isStandalone, manualKind } from '../lib/install.js';
 
 // "Discover Shaggar" with the last word highlighted in a red block.
 function HeroTitle() {
@@ -111,6 +112,9 @@ export function More() {
       <h3 className="sech">{t('m.language')}</h3>
       <div className="seg" role="group" aria-label={t('m.language')}>{Object.entries(LANGS).map(([k, l]) => <button key={k} aria-pressed={String(getLang() === k)} lang={k} onClick={() => { setLang(k); toast(LANGS[k]); }}>{l}</button>)}</div>
       {getLang() !== 'en' ? <p className="help" style={{ margin: '-6px 4px 10px' }}>Where a translation is not ready yet, English is shown.</p> : null}
+      {!isStandalone() ? <div className="card list-card">
+        <Row icon="smartphone" color="var(--brand)" title="Install app" sub="Add it to your home screen. Opens full screen and works with a weak connection." onClick={installApp} />
+      </div> : null}
       <div className="card list-card">
         {isStaff() ? <Row icon="bookmark" color="var(--cyan)" title={t('nav.saved')} sub={savedList().length + ' places'} onClick={() => actions.setView('saved')} /> : null}
         <Row icon="route" color="var(--violet)" title={t('home.plan')} sub={t('home.plan_sub')} onClick={() => actions.setView('plan')} />
@@ -132,6 +136,32 @@ export function More() {
     </div>
   );
 }
+
+/* ---------- install the app ---------- */
+const INSTALL_STEPS = {
+  ios: ['Tap the Share button (the square with an arrow) at the bottom of Safari. On iPad it is at the top.', 'Scroll down and tap “Add to Home Screen”.', 'Tap “Add”. The app appears on your home screen.'],
+  'ios-other': ['Tap the Share button (the square with an arrow) next to the address bar.', 'Tap “Add to Home Screen”. If you do not see it, open this page in Safari and try there.', 'Tap “Add”.'],
+  android: ['Tap the menu (⋮) at the top right of the browser.', 'Tap “Install app” or “Add to Home screen”.', 'Tap “Install”. The app appears on your home screen and in your app list.'],
+  'android-firefox': ['Tap the menu (⋮) of Firefox.', 'Tap “Install” or “Add to Home screen”.', 'Confirm. For the best result you can also open this page in Chrome.'],
+  inapp: ['This page is open inside another app (for example Telegram or Facebook), which cannot install apps.', 'Tap the menu (⋮ or …) and choose “Open in browser” or “Open in Chrome / Safari”.', 'Then come back to More → Install app.'],
+  desktop: ['Click the install icon at the right end of the address bar, or open the browser menu.', 'Choose “Install Discover Shaggar” or “Install app”.', 'Click “Install”.'],
+};
+async function installApp() {
+  if (canPrompt()) {
+    const r = await promptInstall();
+    if (r === 'accepted') toast('Installing… the app will appear on your home screen.');
+    return;
+  }
+  const kind = manualKind();
+  const steps = INSTALL_STEPS[kind].map((s) => s.replace('Discover Shaggar', brand.name));
+  openModal(() => <><ModalHead title="Install app" /><div className="mbody">
+    <p className="help" style={{ marginBottom: 12 }}>{kind === 'inapp' ? 'One extra step first:' : 'Your browser does not show an install button here, so add it in three steps:'}</p>
+    <ol style={{ paddingLeft: 20, display: "grid", gap: 10, color: "var(--fg)", lineHeight: 1.5, fontSize: 15 }}>{steps.map((s, i) => <li key={i}>{s}</li>)}</ol>
+    {kind !== 'inapp' ? <p className="help" style={{ marginTop: 14 }}>Already installed? Open it from your home screen. The page must be opened with https:// for installing to work.</p> : null}
+    <button className="btn block" style={{ marginTop: 16 }} onClick={() => copyText(location.origin)}><Icon n="copy" />Copy the app link</button>
+  </div></>);
+}
+actions.installApp = installApp;
 
 /* ---------- content pages ---------- */
 function Prose({ text }) {
