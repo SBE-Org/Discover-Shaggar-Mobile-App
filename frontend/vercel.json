@@ -4,9 +4,9 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "rewrites": [
-    { "source": "/api/:path*", "destination": "https://YOUR-BACKEND.onrender.com/api/:path*" },
-    { "source": "/uploads/:path*", "destination": "https://YOUR-BACKEND.onrender.com/uploads/:path*" },
-    { "source": "/manifest.webmanifest", "destination": "https://YOUR-BACKEND.onrender.com/manifest.webmanifest" },
+    { "source": "/api/:path*", "destination": "https://discover-shaggar-mobile-app.onrender.com/api/:path*" },
+    { "source": "/uploads/:path*", "destination": "https://discover-shaggar-mobile-app.onrender.com/uploads/:path*" },
+    { "source": "/manifest.webmanifest", "destination": "https://discover-shaggar-mobile-app.onrender.com/manifest.webmanifest" },
     { "source": "/admin", "destination": "/admin/index.html" },
     { "source": "/admin/:path*", "destination": "/admin/index.html" }
   ],
