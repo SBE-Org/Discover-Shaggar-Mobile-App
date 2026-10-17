@@ -1,0 +1,5 @@
+<svg width="512" height="512" viewBox="0 0 64 64" role="img" aria-label="Logo" xmlns="http://www.w3.org/2000/svg">
+    <rect width="64" height="64" rx="16" fill="#C8102E"/><path d="M0 50h64v6H0z" fill="#141212"/>
+    <path d="M0 53l4-3 4 3-4 3Z" fill="#fff"/><path d="M8 53l4-3 4 3-4 3Z" fill="#fff"/><path d="M16 53l4-3 4 3-4 3Z" fill="#fff"/><path d="M24 53l4-3 4 3-4 3Z" fill="#fff"/><path d="M32 53l4-3 4 3-4 3Z" fill="#fff"/><path d="M40 53l4-3 4 3-4 3Z" fill="#fff"/><path d="M48 53l4-3 4 3-4 3Z" fill="#fff"/><path d="M56 53l4-3 4 3-4 3Z" fill="#fff"/>
+    <path d="M32 9c-9.4 0-17 7.4-17 16.6C15 37.8 32 48 32 48s17-10.2 17-22.4C49 16.4 41.4 9 32 9Z" fill="#fff"/>
+    <path d="M32 16l2.6 6.4L41 25l-6.4 2.6L32 34l-2.6-6.4L23 25l6.4-2.6Z" fill="#141212"/><circle cx="32" cy="25" r="2.4" fill="#C8102E"/></svg>

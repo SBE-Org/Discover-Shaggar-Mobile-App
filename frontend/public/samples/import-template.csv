@@ -1,0 +1,2 @@
+name,name_om,name_am,sector,type,subcity,woreda,kebele,latitude,longitude,accuracy_m,phone,email,hours,website,description,source,owner_department,status,verified
+EXAMPLE - replace with a real place,,,health,hc,3,Woreda 02,Near the main market,8.912340,38.619870,6,+251 11 000 0000,,Mon–Sat 08:00–17:00,,Primary care and vaccinations.,Field survey 2026,Health Bureau,submitted,no

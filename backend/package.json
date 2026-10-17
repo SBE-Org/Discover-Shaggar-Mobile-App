@@ -1,0 +1,25 @@
+{
+  "name": "discover-shaggar-backend",
+  "version": "3.0.0",
+  "description": "Discover Shaggar API: places, trips, menus, moderation and the admin back office, on Node.js and MongoDB.",
+  "type": "module",
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=20.10"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "create-admin": "node scripts/create-admin.js",
+    "seed-demo": "node scripts/seed-demo.js",
+    "backup": "node scripts/backup.js",
+    "restore": "node scripts/restore.js",
+    "import-sqlite": "node --disable-warning=ExperimentalWarning scripts/import-sqlite.js",
+    "test": "node --test tests/*.test.js"
+  },
+  "dependencies": {
+    "mongodb": "^6.10.0"
+  },
+  "license": "UNLICENSED",
+  "private": true
+}

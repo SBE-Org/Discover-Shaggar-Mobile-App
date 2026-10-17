@@ -1,0 +1,26 @@
+# Render Blueprint: the API (backend folder) as a free web service.
+# MONGODB_URI is asked for when you create the Blueprint (paste your MongoDB Atlas connection string).
+services:
+  - type: web
+    name: discover-shaggar-api
+    runtime: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm install --omit=dev
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: "22"
+      - key: MONGODB_URI
+        sync: false
+      - key: IP_SALT
+        generateValue: true
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: SEED_DEMO
+        value: "0"

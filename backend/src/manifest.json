@@ -1,0 +1,23 @@
+{
+  "name": "Discover Shaggar",
+  "short_name": "Discover Shaggar",
+  "description": "Verified places, services, tourism sites, trips and events across all 12 sub-cities of Shaggar City.",
+  "start_url": "/#home",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F7F4F1",
+  "theme_color": "#141212",
+  "categories": ["navigation", "travel", "government"],
+  "icons": [
+    { "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Map", "url": "/#map", "description": "Places closest to you" },
+    { "name": "Trips & events", "url": "/#trips", "description": "Upcoming trips and events" },
+    { "name": "Admin", "url": "/#admin", "description": "Staff: capture, review and publish" }
+  ]
+}
